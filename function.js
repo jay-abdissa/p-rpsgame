@@ -3,6 +3,16 @@ let losses = 0;
 
 const result = document.getElementById("result");
 
+document.addEventListener("DOMContentLoaded", function () {
+  const choices = document.querySelectorAll(".choice");
+
+  choices.forEach(choice => {
+    choice.addEventListener("click", () => {
+      userChoice(choice.dataset.selection);
+    });
+  });
+});
+
 function getComputerChoice() {
   const choices = ["rock", "paper", "scissors"];
   const randomIndex = Math.floor(Math.random() * 3);
@@ -47,25 +57,33 @@ function determineWinner(user, computer) {
 }
 
 function displayResult(winner, computerSelection) {
-  const userChoiceText = document.createElement("i");
-  userChoiceText.className = `far fa-hand-${winner.split(" ")[0]}`;
-  result.innerHTML = userChoiceText.outerHTML;
+  const resultText = document.createElement("span");
+  resultText.innerText = winner;
 
+  if (winner.startsWith("You")) {
+    resultText.style.backgroundColor = "green";
+    applyBackgroundColor("green");
+  } else if (winner.startsWith("Computer")) {
+    resultText.style.backgroundColor = "red";
+    applyBackgroundColor("red");
+  } else {
+    resultText.style.backgroundColor = "";
+    applyBackgroundColor("");
+  }
+
+  result.innerHTML = "";
+  result.appendChild(resultText);
   setTimeout(() => {
-    if (winner === "It's a tie!") {
-      result.innerHTML += "It's a tie!";
-    } else {
+    if (winner !== "It's a tie!") {
       result.innerHTML += ` Computer chose <i class="far fa-hand-${computerSelection}"></i>.`;
     }
-
-    if (winner.startsWith("You")) {
-      userChoiceText.style.color = "green";
-    } else if (winner.startsWith("Computer")) {
-      userChoiceText.style.color = "red";
-    } else {
-      userChoiceText.style.color = "";
-    }
-
     result.innerHTML += `<br>Wins: ${wins}, Losses: ${losses}`;
   }, 500); // A short delay to show the computer's choice after user choice
+}
+
+function applyBackgroundColor(color) {
+  const buttons = document.querySelectorAll(".choice");
+  buttons.forEach(button => {
+    button.style.backgroundColor = color;
+  });
 }

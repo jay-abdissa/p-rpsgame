@@ -19,18 +19,23 @@ body {
   }
   
   .result {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
+    font-size: 32px; /* Update the font size here to make the result text bigger */
+    padding: 20px;
+    margin-top: 20px;
+    border: 2px solid #ccc;
+    display: inline-block;
   }
   
   .choice {
-    padding: 10px;
-    font-size: 40px;
-    background-color: #eee;
-    border-radius: 50%;
+    display: inline-block;
+    margin: 10px;
+    padding: 20px;
+    font-size: 24px;
     cursor: pointer;
-    transition: background-color 0.3s;
+  }
+  
+  .choice i {
+    margin-right: 10px;
   }
   
   .choice:hover {
@@ -43,5 +48,12 @@ body {
     background-color: #eee;
     border: none;
     cursor: pointer;
+  }
+  .win {
+    color: green;
+  }
+  
+  .lose {
+    color: red;
   }
   

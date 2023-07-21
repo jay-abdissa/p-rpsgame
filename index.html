@@ -10,13 +10,12 @@
 <body>
   <div class="game-container">
     <h1>Rock Paper Scissors</h1>
-    <div class="score">Score: <span id="score">0</span></div>
     <div class="result" id="result">Make your choice!</div>
     <div class="choices">
-        <span class="choice" onclick="userChoice('rock')"><i class="far fa-hand-rock"></i></span>
-        <span class="choice" onclick="userChoice('paper')"><i class="far fa-hand-paper"></i></span>
-        <span class="choice" onclick="userChoice('scissors')"><i class="far fa-hand-scissors"></i></span>
-      </div>      
+      <span class="choice" data-selection="rock"><i class="far fa-hand-rock"></i></span>
+      <span class="choice" data-selection="paper"><i class="far fa-hand-paper"></i></span>
+      <span class="choice" data-selection="scissors"><i class="far fa-hand-scissors"></i></span>
+    </div>
   </div>
   <script src="function.js"></script>
 </body>
